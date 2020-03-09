@@ -19,12 +19,19 @@
             <button type="button" id = "next" class="btn btn-primary btn-lg btn-block">next</button>
             </div>
             <div>
-                <p id="timer">CorrectAnswers:<span id="span"></span></p>
+                <p class="timer">Correct Answers:<span id="span"></span></p>
+                <p class="timer">Incorrect Answers:<span id="span1"></span></p>
+
+            </div>
+            <div id="lada">
+                <h3></h3>
             </div>
         <script type="text/javascript">
             var i = 0; 
             var correctCounter = 0;
             var incorrectCounter = 0;
+            var seconds = 91;
+
             
             
             var questions = [
@@ -44,6 +51,8 @@
             }
             
             $(function() {
+                setInterval( decreasing , 1000);
+
                 reRender();
                 
               $("#answer1").on("click", function() {
@@ -51,11 +60,15 @@
                     correctCounter++;
                     $("#span").text(correctCounter);
                     
+                
                   }
                   else {
                       incorrectCounter++;
+                      $("#span1").text(incorrectCounter);
+                      seconds -= 10;
                       
                   }
+                  
                 
               });
               $("#answer2").on("click", function() {
@@ -66,7 +79,8 @@
                   }
                   else {
                       incorrectCounter++;
-                     
+                      $("#span1").text(incorrectCounter);
+                      seconds -= 10;
                   } 
               });
               $("#answer3").on("click", function() {
@@ -77,6 +91,8 @@
                   }
                   else {
                       incorrectCounter++;
+                      $("#span1").text(incorrectCounter);
+                      seconds -= 10;
                       
                   }
               });
@@ -87,7 +103,8 @@
                   }
                   else {
                       incorrectCounter++;
-                      
+                      $("#span1").text(incorrectCounter);
+                      seconds -= 10;
                   }
                
               }); 
@@ -99,8 +116,18 @@
                             
                             i++;
                     })
-
+                    
         
+        function decreasing()  {
+            
+
+
+            seconds--
+            $("#lada").text(seconds);
+        }
+
+
+
         </script>
         <div id = "question"></div>
         <div id = "answer1"></div>
